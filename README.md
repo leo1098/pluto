@@ -8,4 +8,5 @@ Command-line tool to automate some Web-App Penetration Test phases.
 
 ## TODO
 
+- Update fetch csp function so that it does that manually. Targets might not be reachable by Google's tool
 - fix report title with website one
