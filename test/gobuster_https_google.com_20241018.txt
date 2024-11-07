@@ -1,0 +1,19 @@
+===============================================================
+Gobuster v3.6
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     https://google.com
+[+] Method:                  GET
+[+] Threads:                 10
+[+] Wordlist:                ./test/sample_wordlist.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.6
+[+] Timeout:                 10s
+===============================================================
+Starting gobuster in directory enumeration mode
+===============================================================
+[2K/                     (Status: 301) [Size: 220] [--> https://www.google.com/]
+
+===============================================================
+Finished
+===============================================================
