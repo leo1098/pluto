@@ -57,7 +57,7 @@ if __name__ == "__main__":
     # website_url = "http://127.0.0.1:8080"
 
     # Filename
-    output_folder_path = "."
+    output_folder_path = "./test/"
     output_filename = f"gobuster_{website_url.replace('://', '_')}_{datetime.today().strftime('%Y%m%d')}.txt"
     output_file_path = os.path.join(output_folder_path, output_filename)
 

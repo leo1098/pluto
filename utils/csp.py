@@ -199,7 +199,7 @@ if __name__ == "__main__":
 
 
         # Step 2: Evaluate the CSP and expand all findings
-        output_folder_path = "."
+        output_folder_path = "./test/"
         filename = f"csp_{website_url.replace('://', '_')}_{datetime.today().strftime('%Y%m%d')}.html"
         output_file = os.path.join(output_folder_path, filename)
         
