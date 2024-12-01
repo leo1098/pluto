@@ -2,6 +2,7 @@ import argparse
 import sys
 from utils import csp
 from utils import gobuster
+from utils import humble
 import logging
 from urllib.parse import urlparse
 
@@ -24,13 +25,14 @@ def run_csp(website_url, output_folder_path):
 def run_gobuster(website_url, output_folder_path):
     gobuster.main(website_url=website_url, output_folder_path=output_folder_path)    
 
-def process_arg3(website_url, project_path):
-    print(f"[+] Executing task for arg3 with --website_url={website_url} and --project_path={project_path}")
+def run_humble(website_url, output_folder_path):
+    humble.run(website_url=website_url, output_folder_path=output_folder_path)    
+
 
 def process_all(website_url, project_path):
     run_csp(website_url, project_path)
     run_gobuster(website_url, project_path)
-    process_arg3(website_url, project_path)
+    run_humble(website_url, project_path)
 
 def main():
     # Create argument parser
@@ -43,6 +45,9 @@ def main():
     # Mandatory options
     parser.add_argument("--url", required=True, help="The target url (either domain or full url)")
     parser.add_argument("--project-path", required=True, help="The project folder path")
+
+    # Optional Argumnents
+    parser.add_argument("--cookies", required=False, help="Cookies to use: C1=V1; C2=V2;")
 
 
     # Parse the arguments
@@ -64,6 +69,8 @@ def main():
             run_csp(url, output_folder_path)
         if "gobuster" in args.task:
             run_gobuster(url, output_folder_path)
+        if "humble" in args.task:
+            run_humble(url, output_folder_path)
         
 
 if __name__ == "__main__":
