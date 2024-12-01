@@ -36,7 +36,7 @@ def run_gobuster(website_url, wordlist, output_file_path, threads=10):
     except FileNotFoundError:
         logging.info("Gobuster is not installed or not found in PATH.")
     except Exception as e:
-        logging.info(f"An error occurred: {str(e)}")
+        logging.error(f"An error occurred: {str(e)}")
 
 
 def main(website_url, output_folder_path):

@@ -3,6 +3,7 @@ import sys
 from utils import csp
 from utils import gobuster
 from utils import humble
+from utils import nuclei
 import logging
 from urllib.parse import urlparse
 
@@ -28,18 +29,22 @@ def run_gobuster(website_url, output_folder_path):
 def run_humble(website_url, output_folder_path):
     humble.run(website_url=website_url, output_folder_path=output_folder_path)    
 
+def run_nuclei(website_url, output_folder_path):
+    nuclei.run(website_url=website_url, output_folder_path=output_folder_path)    
+
 
 def process_all(website_url, project_path):
     run_csp(website_url, project_path)
     run_gobuster(website_url, project_path)
     run_humble(website_url, project_path)
+    run_nuclei(website_url, project_path)
 
 def main():
     # Create argument parser
     parser = argparse.ArgumentParser(description="A CLI script to automatically perform WAPT tasks.")
 
     
-    parser.add_argument("task", nargs="+", choices=["csp", "gobuster", "all"],
+    parser.add_argument("task", nargs="+", choices=["csp", "gobuster", "humble", "nuclei", "all"],
                         help="Specify which task(s) to execute. Use 'all' as the only argument to execute everything.")
 
     # Mandatory options
@@ -71,6 +76,8 @@ def main():
             run_gobuster(url, output_folder_path)
         if "humble" in args.task:
             run_humble(url, output_folder_path)
+        if "nuclei" in args.task:
+            run_nuclei(url, output_folder_path)
         
 
 if __name__ == "__main__":

@@ -14,6 +14,8 @@ https://commondatastorage.googleapis.com/chromium-browser-snapshots/index.html?p
 
 - [DONE] Update fetch csp function so that it does that manually. Targets might not be reachable by Google's tool
 - [DONE] fix report title with website one
+- [DONE] add `humble` support
+- [] add cookie support
 - [] Add `httpx` support
-- [] Add `nmap` support
+- [DONE] Add `nuclei` support
 - [] Add `nikto` support
