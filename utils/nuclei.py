@@ -31,6 +31,13 @@ def run_nuclei(website_url: str, output_folder_path: str) -> None:
     except subprocess.CalledProcessError as e:
         logging.error(f"Error during scan: {e}")
 
+def main(website_url, output_folder_path):
+    try:
+        logging.info(f"Running nuclei analysis against {website_url}")
+        run_nuclei(website_url, output_folder_path)
+    except Exception as e:
+        logging.error(f"An error occurred: {e}")
+
 # Example usage
 if __name__ == "__main__":
     run_nuclei(

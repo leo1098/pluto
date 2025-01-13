@@ -27,10 +27,10 @@ def run_gobuster(website_url, output_folder_path):
     gobuster.main(website_url=website_url, output_folder_path=output_folder_path)    
 
 def run_humble(website_url, output_folder_path):
-    humble.run(website_url=website_url, output_folder_path=output_folder_path)    
+    humble.main(website_url=website_url, output_folder_path=output_folder_path)    
 
 def run_nuclei(website_url, output_folder_path):
-    nuclei.run(website_url=website_url, output_folder_path=output_folder_path)    
+    nuclei.main(website_url=website_url, output_folder_path=output_folder_path)    
 
 
 def process_all(website_url, project_path):
