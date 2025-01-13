@@ -12,16 +12,20 @@ from datetime import datetime
 
 # Configure logging
 logger = logging.getLogger(__name__)
-logging.basicConfig(format='[%(levelname)s] %(module)s:%(funcName)s - %(message)s', level=logging.INFO)
+logging.basicConfig(format='[%(levelname)s] %(module)s:%(funcName)s:%(lineno)d  - %(message)s', level=logging.INFO)
+logging.basicConfig(format='[%(levelname)s] %(name)s:%(funcName)s:%(lineno)d - %(message)s', level=logging.ERROR)
 
 def fetch_csp(website_url):
     """Fetch the CSP from the headers or meta tags of the provided URL."""
     logging.info(f'Fetching CSP from {website_url}')
-    csp = ""
+    csp = None
+
+    session = requests.Session()
+    session.verify = False
 
     try:
         # Send a GET request to the target URL
-        response = requests.get(website_url, timeout=10)
+        response = session.get(website_url, timeout=10)
         response.raise_for_status()  # Raise an exception for non-200 responses
 
         # Try to fetch the CSP from headers
@@ -45,6 +49,7 @@ def fetch_csp(website_url):
             return csp
 
         logging.info(f"No CSP found in meta tags for {website_url}")
+
         return csp
 
     except requests.RequestException as e:
@@ -168,7 +173,7 @@ def main(website_url, output_folder_path):
         # Step 1: Fetch the CSP for the given URL
         csp = fetch_csp(website_url)
         
-        if csp == "":
+        if csp == None:
             logging.error(f"No CSP found for {website_url}, skipping CSP evaluation")
             return
 
@@ -180,12 +185,12 @@ def main(website_url, output_folder_path):
         evaluate_csp(csp, output_file_path, website_url)
 
     except Exception as e:
-        logging.error(f"An error occurred: {e}")
+        logging.error(f"An error occurred: {str(e)}")
 
 
 if __name__ == "__main__":
 
-    website_url = 'google.com'
+    website_url = 'http://www.columbia.edu/~fdc/sample.html'
 
     try:
         website_url = normalize_url(website_url)  # Ensure the URL has a valid scheme

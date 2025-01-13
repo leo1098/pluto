@@ -10,16 +10,16 @@ logging.basicConfig(format='[%(levelname)s] %(name)s:%(funcName)s - %(message)s'
 def run_humble(website_url, output_folder_path):
     try:
         # Prepare the output filename and path
-        timestamp = datetime.datetime.now().strftime('%Y%m%d_%H%M%S')
-        output_filename = f"humble_{website_url.replace('://', '_')}_{timestamp}.pdf"
-        output_file_path = os.path.join(output_folder_path, output_filename)
+        # timestamp = datetime.datetime.now().strftime('%Y%m%d_%H%M%S')
+        # output_filename = f"humble_{website_url.replace('://', '_')}_{timestamp}.pdf"
+        # output_file_path = os.path.join(output_folder_path, output_filename)
 
         # Construct the humble command
         command = [
             "humble",
             "-u", website_url,
             "-o", "pdf",
-            "-of", output_filename,
+            # "-of", output_filename,
             "-op", output_folder_path
         ]
 
@@ -30,7 +30,7 @@ def run_humble(website_url, output_folder_path):
         stdout, stderr = process.communicate()
 
         if process.returncode == 0:
-            logging.info(f"Humble analysis completed. Output saved to: {output_file_path}")
+            logging.info(f"Humble analysis completed. Output saved to folder: {output_folder_path}")
         else:
             logging.error(f"Humble analysis failed with return code {process.returncode}. Error: {stderr}")
 

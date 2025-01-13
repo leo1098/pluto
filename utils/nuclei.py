@@ -19,7 +19,7 @@ def run_nuclei(website_url: str, output_folder_path: str) -> None:
         subprocess.CalledProcessError: If the Nuclei command fails.
     """
 
-    timestamp = datetime.datetime.now().strftime('%Y%m%d_%H%M%S')
+    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
     output_filename = f"nuclei_{website_url.replace('://', '_')}_{timestamp}.txt"
     output_file_path = os.path.join(output_folder_path, output_filename)
 

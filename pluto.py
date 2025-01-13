@@ -9,6 +9,7 @@ from urllib.parse import urlparse
 
 # Configure logging
 logging.basicConfig(format='[%(levelname)s] %(name)s:%(funcName)s - %(message)s', level=logging.INFO)
+logging.basicConfig(format='[%(levelname)s] %(name)s:%(funcName)s:%(lineno)d - %(message)s', level=logging.ERROR)
 
 def normalize_url(url):
     """Ensure the URL has a valid scheme. Default to HTTPS if missing."""

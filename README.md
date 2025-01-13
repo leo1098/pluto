@@ -19,3 +19,4 @@ https://commondatastorage.googleapis.com/chromium-browser-snapshots/index.html?p
 - [] Add `httpx` support
 - [DONE] Add `nuclei` support
 - [] Add `nikto` support
+- [] If gobuster fails du to custom error pages, extract the length and re-run it adding that flag
