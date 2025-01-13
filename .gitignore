@@ -1,2 +1,4 @@
 env/
 chrome-linux/
+
+*.pyc
